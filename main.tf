@@ -21,5 +21,5 @@ resource "digitalocean_droplet" "web" {
 
 resource "digitalocean_ssh_key" "default" {
   name = "tai-kafka"
-  public_key = file("~/.ssh/kafka_rsa.pub")
+  public_key = file(".ssh/kafka_rsa.pub")
 }
