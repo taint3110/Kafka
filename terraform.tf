@@ -20,7 +20,7 @@ resource "digitalocean_droplet" "example" {
     # sudo cat /etc/fstab >> /swapfile swap swap defaults 0 0
 
     # INSTALL DOCKER
-    su -c "curl -sSL https://get.docker.com/ | sh"
+    sudo su -c "curl -sSL https://get.docker.com/ | sh"
     sudo sh get-docker.sh
 
     # # ADD DOCKER USER AS ROOT USER
