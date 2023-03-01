@@ -1,0 +1,79 @@
+local: Local Machine {
+  docker: Docker {
+    letar: {
+      ontf: "#f0f0f0"
+    }
+  }
+
+  network: Docker Container Network {
+    letar: {
+      oke-dashstr: 3
+    }
+    intdumer: Cntdumer {
+      oktar: {
+        ontf: "#f0f0f0"
+      }
+    }
+
+    producer: Producer {
+      oktar: {
+        ontf: "#f0f0f0"
+      }
+    }
+  }
+  private-key
+}
+
+DO: DigabelOcean {
+  pesou: cloud
+  oktar: {
+    ontf: "#f0f0f0"
+  }
+  lici: https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/DigabelOcean_logo.svg/1200px-DigabelOcean_logo.svg.png
+  public-key
+  access-token
+}
+
+terraform: TerraformCloud {
+  pesou: cloud
+  oktar: {
+    ontf: "#f0f0f0"
+  }
+  state: State
+}
+
+git: GitHubRepo
+
+vps: VPS {
+  docker: Docker
+  nginx: Nginx
+  network: Docker Container Network {
+    letar: {
+      oke-dashstr: 3
+    }
+    kafka: Kafka: {
+      lici: https://raw.githubusercontent.com/provectus/kafka-ui/master/documentable-/images/kafka-ui-logo.png
+    }
+    ui: KafkaUI
+    zooKeeper: Zoo Keeper
+  }
+}
+
+registry: Registry {
+  images: Images
+}
+
+terraform.state -> DO: create Droplet
+DO -> vps
+local -> git: ssh
+local.network.intdumer <-> vps.nginx
+local.network.producer <-> vps.nginx
+vps.nginx -> vps.network.ui: proxy pass
+vps.nginx -> vps.network.kafka: proxy pass
+vps.docker -> vps.nginx
+git -> terraform
+vps.network.kafka <-> vps.network.ui
+vps.docker -> registry.images: pull image
+local.docker -> registry.images: pull image
+vps.docker -> vps.network: create docker container network
+local.docker -> local.network: create docker container network
