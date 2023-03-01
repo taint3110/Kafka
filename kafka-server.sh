@@ -30,8 +30,8 @@ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
     sudo su
 
     echo "server {
-        listen 80;
-        listen [::]:80;
+        listen 81;
+        listen [::]:81;
 
         root /var/www/"${var.domain}"/html;
         index index.html index.htm index.nginx-debian.html;
