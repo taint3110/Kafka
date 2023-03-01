@@ -7,10 +7,6 @@ variable "ssh_public_key" {
   description = "Public key to connect to instance through SSH"
 }
 
-variable "ssh_private_key" {
-  description = "Private key to connect to instance through SSH"
-}
-
 variable "github_token" {
   description = "Github access token"
 }
