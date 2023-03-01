@@ -4,7 +4,7 @@ resource "digitalocean_ssh_key" "default" {
   public_key = var.ssh_public_key
 }
 
-resource "digitalocean_droplet" "example" {
+resource "digitalocean_droplet" "kafka" {
   image  = "ubuntu-20-04-x64"
   name   = "kafka"
   region = "sgp1"
