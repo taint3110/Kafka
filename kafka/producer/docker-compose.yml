@@ -1,10 +1,11 @@
 version: "3"
-producer:
-  image: kafka-node-example
-  container_name: producer
-  networks:
-    - kafka-network
-  depends_on:
+
+services:
+  producer:
+    image: kafka-node-example
+    container_name: producer
+    networks:
+      - kafka-network
 
 networks:
   kafka-network:

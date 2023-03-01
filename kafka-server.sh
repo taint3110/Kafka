@@ -27,7 +27,7 @@ services:
     networks:
       - kafka-network
   broker:
-    image: confluentinc/cp-kafka:7.3.0
+    image: confluentinc/cp-kafka:5.3.1
     hostname: localhost
     container_name: broker
     ports:
