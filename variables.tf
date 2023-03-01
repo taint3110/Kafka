@@ -10,3 +10,7 @@ variable "ssh_public_key" {
 variable "github_token" {
   description = "Github access token"
 }
+
+variable "domain" {
+  
+}

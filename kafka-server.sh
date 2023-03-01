@@ -9,6 +9,44 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.29.1/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
+# SETUP SSL
+    sudo apt update
+    sudo apt install nginx -yqq
+
+    sudo mkdir -p /var/www/"${var.domain}"/html
+    sudo chown -R $USER:$USER /var/www/"${var.domain}"/html
+    sudo chmod -R 755 /var/www/"${var.domain}"
+    sudo rm -f /var/www/"${var.domain}"/html/index.html
+    sudo echo "
+      <html>
+          <head>
+              <title>Welcome to Your Website!</title>
+          </head>
+          <body>
+              <h1>Success!  The Your Website server block is working!</h1>
+          </body>
+      </html>" >> /var/www/"${var.domain}"/html/index.html
+
+    sudo su
+
+    echo "server {
+        listen 80;
+        listen [::]:80;
+
+        root /var/www/"${var.domain}"/html;
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name "${var.domain}";
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+    }" >> /etc/nginx/sites-available/"${var.domain}"
+
+    nginx -t
+    ln -s /etc/nginx/sites-available/"${var.domain}" /etc/nginx/sites-enabled/
+    systemctl reload nginx
+
 # INSTALL KAFKA, ZOOKEEPER, KAFKA-UI
 mkdir -p ~/kafka
 cd ~/kafka
