@@ -7,4 +7,4 @@ RUN npm install
 
 COPY consumer.js .
 
-CMD ["node", "consumer.js"]
+CMD ["node", "index.js"]

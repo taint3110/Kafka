@@ -1,5 +1,15 @@
 {
+  "name": "kafka-customer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "kafkajs": "^2.2.4"
+    "kafka-node": "^5.0.0"
   }
 }
